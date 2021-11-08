@@ -1,0 +1,22 @@
+<launch>
+
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="worlds/empty.world"/>
+    <arg name="paused" value="true"/>
+  </include>
+  
+   <param name="robot_description" textfile="$(find brdlmillihexapod_description)/urdf/brdlmillihexapod.urdf" />  
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find brdlmillihexapod_description)/urdf/brdlmillihexapod.urdf -urdf -model brdlmillihexapod -z 0.2 -R -1.57079" />
+
+
+
+ 
+ <include file="$(find brdlmillihexapod_control)/launch/brdlmillihexapod_control.launch"/> 
+
+
+
+
+
+
+</launch>
